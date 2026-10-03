@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIÊU BA KHÍ STORE - Shop Acc Liên Quân Uy Tín</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#1a1a1a}::-webkit-scrollbar-thumb{background:#dc2626;border-radius:4px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}.blink{animation:blink 1s infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}.float-anim{animation:float 3s ease-in-out infinite}
+.acc-card{transition:all .3s}.acc-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(220,38,38,.3)}
+.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cat-btn{background:#1f2937;color:#d1d5db;transition:all .2s;border:1px solid transparent}
+.cat-btn:hover{background:#374151;color:#fff}
+.cat-btn.active-cat{background:linear-gradient(135deg,#dc2626,#ea580c)!important;color:#fff!important;box-shadow:0 4px 15px rgba(220,38,38,.3)}
+</style>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans min-h-screen flex flex-col">
+
+<header class="bg-gray-900/95 backdrop-blur-md border-b border-red-600/30 sticky top-0 z-40 shadow-lg">
+<div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+<div class="flex items-center space-x-3">
+<div class="bg-gradient-to-br from-red-600 to-orange-600 text-white font-black text-xl px-3 py-1.5 rounded-lg shadow-lg">3K</div>
+<div>
+<h1 class="text-lg md:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-400 to-yellow-500 uppercase">SIÊU BA KHÍ STORE</h1>
+<p class="text-[10px] text-gray-500 hidden md:block">Shop Acc Liên Quân Uy Tín #1</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<a href="https://zalo.me/0896493633" target="_blank" class="bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold px-3 py-2 rounded-lg text-xs flex items-center gap-1.5">
+<i class="fa-solid fa-headset"></i><span class="font-mono">0896493633</span>
+</a>
+<button onclick="openAdminModal()" class="bg-gray-800 text-yellow-400 border border-yellow-500/30 font-bold px-3 py-2 rounded-lg text-xs"><i class="fa-solid fa-key"></i></button>
+</div>
+</div>
+</header>
+
+<section class="relative bg-gradient-to-b from-red-950/60 to-gray-950 py-10 px-4 text-center border-b border-gray-800">
+<div class="max-w-4xl mx-auto relative z-10">
+<span class="inline-block bg-red-600/20 text-red-400 border border-red-500/40 text-xs font-bold px-3 py-1 rounded-full uppercase mb-3">🔥 Hệ Thống Bán Acc LQ Uy Tín</span>
+<h2 class="text-3xl md:text-5xl font-black mt-3 text-white">SHOP ACC LIÊN QUÂN <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">SIÊU BA KHÍ</span></h2>
+<p class="text-gray-400 mt-3 text-sm">Reg Clone, Nick Skin SSS, Collab Anime & Acc Giá Rẻ Học Sinh</p>
+<div class="mt-6 flex flex-wrap justify-center gap-2 text-xs font-semibold">
+<div class="bg-gray-900 border border-gray-800 px-3 py-2 rounded-lg"><i class="fa-solid fa-bolt text-yellow-400"></i> Giao Nick Tốc Độ</div>
+<div class="bg-gray-900 border border-gray-800 px-3 py-2 rounded-lg"><i class="fa-solid fa-shield-halved text-green-400"></i> Bảo Hành Info</div>
+<div class="bg-gray-900 border border-gray-800 px-3 py-2 rounded-lg"><i class="fa-solid fa-star text-orange-400"></i> 5000+ Khách</div>
+</div>
+</div>
+</section>
+
+<section class="bg-gray-900/50 border-b border-gray-800">
+<div class="max-w-7xl mx-auto px-4 py-4 grid grid-cols-3 gap-4 text-center">
+<div><p class="text-2xl font-black text-red-500" id="total-accs">0</p><p class="text-xs text-gray-500 uppercase font-bold">Acc Đang Bán</p></div>
+<div><p class="text-2xl font-black text-yellow-500">5K+</p><p class="text-xs text-gray-500 uppercase font-bold">Khách Hàng</p></div>
+<div><p class="text-2xl font-black text-green-500">24/7</p><p class="text-xs text-gray-500 uppercase font-bold">Hỗ Trợ</p></div>
+</div>
+</section>
+
+<main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+<div class="bg-gray-900 p-4 rounded-xl border border-gray-800 mb-6 space-y-4">
+<div class="flex flex-wrap items-center gap-2">
+<div class="flex items-center gap-2 mr-2"><i class="fa-solid fa-filter text-red-500"></i><span class="font-bold text-xs">DANH MỤC:</span></div>
+<button onclick="filterCategory('ALL', this)" class="cat-btn active-cat px-3 py-1.5 rounded-lg text-xs font-bold">TẤT CẢ</button>
+<button onclick="filterCategory('SSS', this)" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-bold">SKIN SSS</button>
+<button onclick="filterCategory('REG', this)" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-bold">REG/CLONE</button>
+<button onclick="filterCategory('VIP', this)" class="cat-btn px-3 py-1.5 rounded-lg text-xs font-bold">VIP</button>
+</div>
+<div class="flex flex-col md:flex-row gap-3">
+<div class="flex-1 flex items-center bg-gray-800 rounded-lg border border-gray-700">
+<i class="fa-solid fa-magnifying-glass text-gray-500 pl-3"></i>
+<input type="text" id="search-input" oninput="renderAccs()" placeholder="Tìm mã nick, skin..." class="w-full bg-transparent px-3 py-2 text-sm text-white focus:outline-none">
+</div>
+<select id="price-filter" onchange="renderAccs()" class="bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white">
+<option value="ALL">💰 Tất cả giá</option>
+<option value="0-50000">Dưới 50K</option>
+<option value="50000-200000">50K - 200K</option>
+<option value="200000-500000">200K - 500K</option>
+<option value="500000-99999999">Trên 500K</option>
+</select>
+</div>
+</div>
+
+<div class="mb-4 flex justify-between items-center">
+<p class="text-sm text-gray-500">Hiển thị <span id="result-count" class="text-red-500 font-bold">0</span> acc</p>
+<select id="sort-filter" onchange="renderAccs()" class="bg-gray-800 border border-gray-700 rounded-lg px-2 py-1 text-xs text-white">
+<option value="newest">Mới nhất</option>
+<option value="price-asc">Giá thấp → cao</option>
+<option value="price-desc">Giá cao → thấp</option>
+</select>
+</div>
+
+<div id="acc-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+<div id="empty-state" class="hidden text-center py-16">
+<i class="fa-solid fa-box-open text-6xl text-gray-700 mb-4"></i>
+<p class="text-gray-500 font-bold">Không tìm thấy acc nào!</p>
+</div>
+</main>
+
+<footer class="bg-gray-900 border-t border-gray-800 py-6 mt-auto">
+<div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-500">
+<p class="font-bold text-red-500 mb-2"><i class="fa-solid fa-store"></i> SIÊU BA KHÍ STORE</p>
+<p>© 2026 SIÊU BA KHÍ STORE. Made with ❤️ in Vietnam</p>
+</div>
+</footer>
+
+<a href="https://zalo.me/0896493633" target="_blank" class="fixed bottom-5 right-5 bg-gradient-to-br from-blue-600 to-blue-500 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-2xl float-anim z-30">
+<i class="fa-solid fa-headset text-2xl"></i>
+<span class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center blink">1</span>
+</a>
+
+<div id="admin-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+<div class="bg-gray-900 border border-red-500/40 rounded-2xl max-w-2xl w-full p-6 relative max-h-[90vh] overflow-y-auto">
+<button onclick="closeAdminModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10"><i class="fa-solid fa-xmark"></i></button>
+
+<div id="admin-login-view">
+<div class="text-center mb-6">
+<div class="inline-flex items-center justify-center w-16 h-16 bg-red-600/20 border border-red-500/40 rounded-full mb-3"><i class="fa-solid fa-lock text-2xl text-red-500"></i></div>
+<h3 class="text-2xl font-black text-yellow-400">ĐĂNG NHẬP ADMIN</h3>
+</div>
+<div class="space-y-4">
+<input type="password" id="admin-pass-input" onkeypress="if(event.key==='Enter') checkAdminPass()" placeholder="Nhập mật khẩu admin..." class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-red-500">
+<button onclick="checkAdminPass()" class="w-full bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold py-3 rounded-lg"><i class="fa-solid fa-sign-in-alt mr-2"></i>ĐĂNG NHẬP</button>
+<p class="text-[10px] text-gray-600 text-center">Mật khẩu: <span class="text-yellow-500 font-mono">tyeuanhthu</span></p>
+</div>
+</div>
+
+<div id="admin-panel-view" class="hidden">
+<div class="flex justify-between items-center mb-6 pb-3 border-b border-gray-800">
+<h3 class="text-xl font-black text-yellow-400"><i class="fa-solid fa-user-shield mr-2"></i>QUẢN TRỊ VIÊN</h3>
+<button onclick="logoutAdmin()" class="text-xs bg-red-900/50 text-red-300 px-3 py-1.5 rounded border border-red-500/30"><i class="fa-solid fa-right-from-bracket"></i> Thoát</button>
+</div>
+
+<form id="add-acc-form" onsubmit="handleAddAcc(event)" class="space-y-4 bg-gray-950 p-4 rounded-xl border border-gray-800">
+<h4 class="font-bold text-sm text-red-400 uppercase"><i class="fa-solid fa-plus-circle"></i> Đăng Nick Mới</h4>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div><label class="block text-xs text-gray-400 mb-1">Mã Nick *</label><input type="text" id="acc-code" required placeholder="VD: MS01" class="w-full bg-gray-800 border border-gray-700 rounded p-2 text-sm text-white"></div>
+<div><label class="block text-xs text-gray-400 mb-1">Giá Bán *</label><input type="number" id="acc-price" required placeholder="50000" class="w-full bg-gray-800 border border-gray-700 rounded p-2 text-sm text-white"></div>
+<div><label class="block text-xs text-gray-400 mb-1">Phân Loại</label><select id="acc-cat" class="w-full bg-gray-800 border border-gray-700 rounded p-2 text-sm text-white"><option value="SSS">SKIN SSS / ANIME</option><option value="REG">ACC REG / CLONE</option><option value="VIP">ACC FULL SKIN VIP</option></select></div>
+<div><label class="block text-xs text-gray-400 mb-1">Số Tướng/Skin *</label><input type="text" id="acc-stats" required placeholder="110 Tướng / 350 Skin" class="w-full bg-gray-800 border border-gray-700 rounded p-2 text-sm text-white"></div>
+</div>
+<div><label class="block text-xs text-gray-400 mb-1">Link Ảnh *</label><input type="url" id="acc-img" required placeholder="https://..." oninput="previewImage(this.value)" class="w-full bg-gray-800 border border-gray-700 rounded p-2 text-sm text-white">
+<div id="img-preview" class="mt-2 hidden"><img id="preview-img" src="" class="w-full h-32 object-cover rounded border border-gray-700"></div>
+</div>
+<div><label class="block text-xs text-gray-400 mb-1">Mô Tả</label><textarea id="acc-desc" rows="2" placeholder="Skin VIP, khung, rank..." class="w-full bg-gray-800 border border-gray-700 rounded p-2 text-sm text-white"></textarea></div>
+<div class="flex items-center gap-2"><input type="checkbox" id="acc-hot" class="w-4 h-4 accent-red-600"><label for="acc-hot" class="text-xs text-gray-400">Đánh dấu <span class="text-red-500 font-bold">HOT</span> 🔥</label></div>
+<button type="submit" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold py-2.5 rounded text-sm"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>ĐĂNG NICK</button>
+</form>
+
+<div class="mt-6">
+<h4 class="font-bold text-sm text-yellow-400 uppercase mb-3">Quản Lý Nick (<span id="admin-count">0</span>)</h4>
+<div id="admin-acc-list" class="space-y-2 max-h-60 overflow-y-auto"></div>
+</div>
+<button onclick="resetToDefault()" class="mt-4 w-full bg-gray-800 text-gray-400 text-xs py-2 rounded border border-gray-700"><i class="fa-solid fa-rotate-left mr-1"></i> Reset dữ liệu mẫu</button>
+</div>
+</div>
+</div>
+
+<script>
+const CONFIG={phone:"0896493633",adminPass:"tyeuanhthu",storageKey:"sieubakhi_accs_v2",shopName:"SIÊU BA KHÍ STORE"};
+const defaultAccs=[
+{id:"D1",code:"MS01",cat:"SSS",price:150000,stats:"98 Tướng / 185 Skin",desc:"Nakroth Thứ Nguyên Vệ Thần, Tulen Kiếm Tiên, Rank Cao Thủ",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",hot:true,createdAt:Date.now()-86400000},
+{id:"D2",code:"MS02",cat:"REG",price:30000,stats:"Full Tướng / 50 Skin",desc:"Acc Reg Clone Trắng Thông Tin, Cày Rank Cực Mượt",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",hot:false,createdAt:Date.now()-172800000},
+{id:"D3",code:"MS03",cat:"VIP",price:450000,stats:"115 Tướng / 420 Skin",desc:"Acc Full Skin VIP, Raz Thái Lan, Violet Vệ Thần",img:"https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=600",hot:true,createdAt:Date.now()-259200000},
+{id:"D4",code:"MS04",cat:"SSS",price:250000,stats:"105 Tướng / 250 Skin",desc:"Full Skin S, nhiều skin giới hạn sự kiện",img:"https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",hot:false,createdAt:Date.now()-345600000},
+{id:"D5",code:"MS05",cat:"REG",price:45000,stats:"Full Tướng / 80 Skin",desc:"Acc Clone sạch, info Việt, đổi được mail",img:"https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=600",hot:false,createdAt:Date.now()-432000000},
+{id:"D6",code:"MS06",cat:"VIP",price:800000,stats:"120 Tướng / 500 Skin",desc:"Siêu VIP full skin, có SKTT, Nakroth bạch kim",img:"https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=600",hot:true,createdAt:Date.now()-518400000}
+];
+let accData=loadFromStorage(),currentCat='ALL';
+function loadFromStorage(){try{const s=localStorage.getItem(CONFIG.storageKey);return s?JSON.parse(s):[...defaultAccs]}catch(e){return[...defaultAccs]}}
+function saveStorage(){try{localStorage.setItem(CONFIG.storageKey,JSON.stringify(accData))}catch(e){}}
+function escapeHtml(s){if(!s)return'';const d=document.createElement('div');d.textContent=String(s);return d.innerHTML}
+function formatPrice(p){return Number(p).toLocaleString('vi-VN')+'đ'}
+function getCatLabel(c){return{SSS:'SKIN SSS',REG:'REG/CLONE',VIP:'VIP FULL'}[c]||c}
+function getCatColor(c){return{SSS:'bg-purple-600',REG:'bg-blue-600',VIP:'bg-gradient-to-r from-yellow-500 to-orange-500'}[c]||'bg-gray-600'}
+
+function renderAccs(){
+const grid=document.getElementById('acc-grid'),empty=document.getElementById('empty-state');
+const search=(document.getElementById('search-input')?.value||'').toLowerCase().trim();
+const priceF=document.getElementById('price-filter')?.value||'ALL';
+const sortF=document.getElementById('sort-filter')?.value||'newest';
+let list=accData.filter(a=>{
+if(currentCat!=='ALL'&&a.cat!==currentCat)return false;
+if(search&&!`${a.code} ${a.desc} ${a.stats}`.toLowerCase().includes(search))return false;
+if(priceF!=='ALL'){const[min,max]=priceF.split('-').map(Number);if(a.price<min||a.price>max)return false}
+return true;
+});
+list.sort((a,b)=>sortF==='price-asc'?a.price-b.price:sortF==='price-desc'?b.price-a.price:(b.createdAt||0)-(a.createdAt||0));
+document.getElementById('result-count').textContent=list.length;
+document.getElementById('total-accs').textContent=accData.length;
+if(!list.length){grid.innerHTML='';empty.classList.remove('hidden');return}
+empty.classList.add('hidden');
+grid.innerHTML=list.map(a=>`
+<div class="acc-card bg-gray-900 border border-gray-800 rounded-xl overflow-hidden flex flex-col justify-between shadow-lg">
+<div>
+<div class="relative">
+<img src="${escapeHtml(a.img)}" onerror="this.src='https://via.placeholder.com/600x400/1a1a1a/666?text=No+Image'" class="w-full h-44 object-cover" loading="lazy">
+<span class="absolute top-2 left-2 ${getCatColor(a.cat)} text-white font-black text-[10px] px-2 py-1 rounded">${getCatLabel(a.cat)}</span>
+${a.hot?'<span class="absolute top-2 right-2 bg-red-600 text-white font-black text-[10px] px-2 py-1 rounded blink">🔥 HOT</span>':''}
+<span class="absolute bottom-2 right-2 bg-black/80 text-yellow-400 font-bold text-[10px] px-2 py-1 rounded border border-yellow-500/30"><i class="fa-solid fa-users"></i> ${escapeHtml(a.stats)}</span>
+</div>
+<div class="p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-black text-red-400">MÃ: <span class="font-mono">${escapeHtml(a.code)}</span></span>
+<button onclick="copyCode('${escapeHtml(a.code)}')" class="text-gray-500 hover:text-red-400 text-xs"><i class="fa-regular fa-copy"></i></button>
+</div>
+<p class="text-xs text-gray-400 line-clamp-2 min-h-[32px]">${escapeHtml(a.desc)}</p>
+<div class="mt-3 pt-3 border-t border-gray-800 flex justify-between items-center">
+<span class="text-[10px] text-gray-500 uppercase font-bold">Giá:</span>
+<span class="text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">${formatPrice(a.price)}</span>
+</div>
+</div>
+</div>
+<div class="p-4 pt-0">
+<button onclick="buyAcc('${escapeHtml(a.code)}', ${a.price})" class="w-full bg-gradient-to-r from-red-600 to-orange-600 text-white font-extrabold py-2.5 rounded-lg text-sm"><i class="fa-solid fa-cart-shopping"></i> MUA NGAY</button>
+</div>
+</div>`).join('');
+}
+
+function filterCategory(cat,btn){currentCat=cat;document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active-cat'));btn.classList.add('active-cat');renderAccs()}
+
+function copyCode(code){navigator.clipboard.writeText(code).then(()=>{Swal.fire({toast:true,position:'top-end',icon:'success',title:'Đã copy: '+code,showConfirmButton:false,timer:1500})}).catch(()=>{})}
+
+function buyAcc(code,price){
+const msg=`Xin chào Shop ${CONFIG.shopName}! 👋\n\nMình muốn mua nick:\n📌 Mã: ${code}\n💰 Giá: ${formatPrice(price)}\n\nNhờ shop tư vấn ạ!`;
+navigator.clipboard.writeText(msg).catch(()=>{});
+Swal.fire({title:'🛒 XÁC NHẬN MUA',html:`<div class="text-left text-sm"><p class="text-gray-600 mb-2">Tin nhắn đã copy sẵn, chỉ cần dán vào Zalo!</p><div class="bg-gray-100 p-3 rounded text-xs font-mono whitespace-pre-line">${escapeHtml(msg)}</div></div>`,icon:'info',showCancelButton:true,confirmButtonColor:'#0068FF',confirmButtonText:'Mở Zalo',cancelButtonText:'Hủy'}).then(r=>{if(r.isConfirmed)window.open(`https://zalo.me/${CONFIG.phone}`,'_blank')});
+}
+
+function openAdminModal(){document.getElementById('admin-modal').classList.remove('hidden');document.body.style.overflow='hidden'}
+function closeAdminModal(){document.getElementById('admin-modal').classList.add('hidden');document.body.style.overflow=''}
+function checkAdminPass(){const p=document.getElementById('admin-pass-input').value;if(p===CONFIG.adminPass){document.getElementById('admin-login-view').classList.add('hidden');document.getElementById('admin-panel-view').classList.remove('hidden');renderAdminAccList()}else Swal.fire({icon:'error',title:'Sai mật khẩu!',confirmButtonColor:'#dc2626'})}
+function logoutAdmin(){document.getElementById('admin-pass-input').value='';document.getElementById('admin-login-view').classList.remove('hidden');document.getElementById('admin-panel-view').classList.add('hidden')}
+function previewImage(url){const p=document.getElementById('img-preview'),i=document.getElementById('preview-img');if(url&&url.trim()){i.src=url;p.classList.remove('hidden');i.onerror=()=>p.classList.add('hidden')}else p.classList.add('hidden')}
+function handleAddAcc(e){e.preventDefault();const code=document.getElementById('acc-code').value.trim().toUpperCase();if(accData.some(a=>a.code===code)){Swal.fire('Lỗi!',`Mã "${code}" đã tồn tại!`,'error');return}
+const n={id:'A_'+Date.now(),code,price:Number(document.getElementById('acc-price').value),cat:document.getElementById('acc-cat').value,stats:document.getElementById('acc-stats').value.trim(),img:document.getElementById('acc-img').value.trim(),desc:document.getElementById('acc-desc').value.trim()||'Acc chất lượng cao',hot:document.getElementById('acc-hot').checked,createdAt:Date.now()};
+accData.unshift(n);saveStorage();renderAccs();renderAdminAccList();document.getElementById('add-acc-form').reset();document.getElementById('img-preview').classList.add('hidden');
+Swal.fire({icon:'success',title:'Đăng
